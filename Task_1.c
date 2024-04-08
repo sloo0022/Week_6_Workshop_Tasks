@@ -24,6 +24,8 @@ argument, only the filtered string must be printed onto the terminal.
 #include <stdio.h>
 #include <string.h>
 
+
+
 void filter_ascending(char* string_1);
 
 int main()
