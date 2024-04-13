@@ -96,5 +96,41 @@ void sort_ascending(struct node **startPtr, int count_nodes)
     for (int i = 1; i < count_nodes; i++)
     {
 		//You may write your code here
-	}
+        prevPtr = *startPtr; 
+        curPtr = (*startPtr) -> nextPtr; 
+
+        while (curPtr != NULL) {
+            if (prevPtr -> data > curPtr -> data) { // if sorting necessary
+
+                // swap for start of the list
+                if (prevPtr == *startPtr) {    
+                    prevPtr -> nextPtr = curPtr -> nextPtr;
+                    curPtr -> nextPtr = prevPtr;
+                    *startPtr = curPtr; 
+
+                // swap for rest of the list 
+                } else {
+                    // temp1Ptr = pointer before prev 
+                    // temp2Ptr = pointer after cur
+                    temp1Ptr -> nextPtr = curPtr;
+                    prevPtr -> nextPtr = temp2Ptr; 
+                    curPtr -> nextPtr = prevPtr;
+                }
+
+                // reassign pointer names 
+                tempPtr = curPtr; 
+                curPtr = prevPtr; 
+                prevPtr = tempPtr; 
+            }
+
+            // walk forward, all 4 ptrs 
+            temp1Ptr = prevPtr;
+            prevPtr = prevPtr -> nextPtr; 
+            curPtr = curPtr -> nextPtr; 
+            if (curPtr != NULL) {           // if not the end of the list 
+                temp2Ptr = curPtr -> nextPtr;
+            }
+                
+        }
+    }
 }
